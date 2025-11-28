@@ -1,0 +1,381 @@
+/* --- FONTS & VARIABLES --- */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --accent-color: #e5e5e5;
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --gap: 1px; /* Gap for the grid lines */
+}
+
+/* --- RESET --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    cursor: none; /* Hide default cursor */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- CUSTOM CURSOR --- */
+.cursor-dot,
+.cursor-circle {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none;
+    mix-blend-mode: difference; /* Inverts color over black/white */
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: white;
+}
+
+.cursor-circle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid white;
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* Hover State for Cursor */
+body.hovering .cursor-circle {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: transparent;
+}
+
+body.viewing .cursor-circle {
+    width: 80px;
+    height: 80px;
+    background-color: white;
+    mix-blend-mode: difference;
+}
+
+body.viewing .cursor-dot {
+    opacity: 0;
+}
+
+/* --- LOADER --- */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: transform 0.8s ease-in-out;
+}
+
+.loader.hidden {
+    transform: translateY(-100%);
+}
+
+.loader-text {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* --- NAVIGATION --- */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    mix-blend-mode: difference;
+    color: #fff;
+}
+
+.nav-logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+/* --- LAYOUT & SECTIONS --- */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.section-padding {
+    padding-top: 200px;
+    padding-bottom: 100px;
+}
+
+/* --- INFO SECTION --- */
+.manifesto {
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    font-weight: 400;
+    max-width: 90%;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.manifesto.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.highlight {
+    font-weight: 700;
+    border-bottom: 2px solid #000;
+    transition: background 0.3s, color 0.3s;
+    display: inline-block;
+}
+
+.highlight:hover {
+    background: #000;
+    color: #fff;
+    padding: 0 5px;
+    border-bottom-color: transparent;
+}
+
+/* --- PROJECTS --- */
+.category-group {
+    position: relative;
+    border-top: 1px solid #000;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background: #000;
+    color: #fff;
+    padding: 20px 40px;
+    z-index: 500;
+    overflow: hidden;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.sticky-header h2 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid #000;
+}
+
+.project-card {
+    border-right: 1px solid #e5e5e5;
+    position: relative;
+    aspect-ratio: 1/1.2;
+    overflow: hidden;
+    background: #fff;
+}
+
+.project-card:nth-child(3n) {
+    border-right: none;
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    filter: grayscale(100%);
+}
+
+.project-card:hover .img-wrapper img {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+.card-meta {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 10;
+    mix-blend-mode: difference;
+    color: #fff;
+    pointer-events: none;
+}
+
+.card-meta h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.card-meta p {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* Animation Class for Cards */
+.reveal-card {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.reveal-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- CONTACT --- */
+.contact-wrapper {
+    margin-bottom: 100px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.contact-wrapper.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+.contact-link {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 700;
+    line-height: 0.9;
+    color: #000;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-link:hover {
+    color: #ccc;
+}
+
+.footer-meta {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+    border-top: 1px solid #e5e5e5;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-col span {
+    color: #999;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-card {
+        border-right: none;
+        border-bottom: 1px solid #e5e5e5;
+        aspect-ratio: 1/1;
+    }
+    .sticky-header h2 {
+        font-size: 1.5rem;
+    }
+    .footer-meta {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    /* Hide custom cursor on touch devices */
+    @media (hover: none) {
+        .cursor-dot, .cursor-circle { display: none; }
+        * { cursor: auto; }
+    }
+}
+/* --- LOGO STYLES --- */
+.loader-logo {
+    width: 150px; /* Größe des Logos im Loader anpassen */
+    height: auto;
+}
+
+.nav-logo-img {
+    height: 40px; /* Höhe des Logos in der Navigation anpassen */
+    width: auto;
+    display: block;
+}
+
+.nav-logo-link {
+    display: block;
+}
+
+/* Projekt-Karten sind jetzt Links, daher Standard-Styling entfernen */
+a.project-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
