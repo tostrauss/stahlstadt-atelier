@@ -377,3 +377,128 @@ a.project-card {
     color: inherit;
     display: block;
 }
+
+.project-header {
+    margin-bottom: 60px;
+    padding-top: 100px; /* Abstand für Fixed Nav */
+}
+
+.project-title {
+    font-size: clamp(3rem, 7vw, 8rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 0.85;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+/* Grid für Projektdaten */
+.project-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    padding-top: 20px;
+    border-top: 2px solid #000;
+    margin-bottom: 80px;
+}
+
+.meta-item span {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.meta-item p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Hero Image */
+.project-hero {
+    width: 100%;
+    margin-bottom: 120px;
+    background-color: #f0f0f0; /* Platzhalterfarbe falls Bild lädt */
+}
+
+.project-hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Beschreibungstext */
+.project-description {
+    max-width: 1100px;
+    margin: 0 auto 120px auto;
+}
+
+.description-text {
+    font-size: clamp(1.5rem, 3vw, 2.8rem);
+    line-height: 1.2;
+    font-weight: 400;
+}
+
+/* Bilder Galerie */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 150px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    background-color: #f0f0f0;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03);
+}
+
+/* Next Project Link */
+.next-project {
+    border-top: 1px solid #e5e5e5;
+    padding-top: 40px;
+}
+
+.next-project-label {
+    color: #999;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    display: block;
+}
+
+.next-project-link {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    text-decoration: none;
+    color: #000;
+    display: inline-block;
+    margin-top: 10px;
+    transition: color 0.3s;
+}
+
+.next-project-link:hover {
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    .project-title {
+        margin-top: 40px;
+    }
+}
