@@ -88,11 +88,11 @@ body.viewing .cursor-dot {
     transform: translateY(-100%);
 }
 
-.loader-text {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 5px;
-    animation: blink 1s infinite;
+.loader-logo{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    resize: both;
 }
 
 @keyframes blink {
@@ -105,7 +105,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 30px 40px;
+    padding: 30px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -193,7 +193,6 @@ nav {
 
 .header-content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     max-width: 1400px;
     margin: 0 auto;
@@ -298,7 +297,7 @@ nav {
 }
 
 .contact-link {
-    font-size: clamp(3rem, 8vw, 7rem);
+    font-size: 4rem;
     font-weight: 700;
     line-height: 0.9;
     color: #000;
@@ -357,14 +356,14 @@ nav {
 }
 /* --- LOGO STYLES --- */
 .loader-logo {
-    width: 150px; /* Größe des Logos im Loader anpassen */
+    width: 1000px;
     height: auto;
 }
 
 .nav-logo-img {
-    height: 40px; /* Höhe des Logos in der Navigation anpassen */
+    height: 30px; /* Höhe des Logos in der Navigation anpassen */
     width: auto;
-    display: block;
+    display: inline;
 }
 
 .nav-logo-link {
@@ -380,7 +379,7 @@ a.project-card {
 
 .project-header {
     margin-bottom: 60px;
-    padding-top: 100px; /* Abstand für Fixed Nav */
+    padding-top: 1px; /* Abstand für Fixed Nav */
 }
 
 .project-title {

@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dotX += (mouseX - dotX) * 1; // Instant
         dotY += (mouseY - dotY) * 1;
         
-        circleX += (mouseX - circleX) * 0.15; // Slow lag
-        circleY += (mouseY - circleY) * 0.15;
+        circleX += (mouseX - circleX) * 0.10; // Slow lag
+        circleY += (mouseY - circleY) * 0.10;
 
         cursorDot.style.left = `${dotX}px`;
         cursorDot.style.top = `${dotY}px`;
@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animateCursor);
     }
     
-    // Only run cursor logic on non-touch devices
     if (matchMedia('(hover: hover)').matches) {
         animateCursor();
     }
