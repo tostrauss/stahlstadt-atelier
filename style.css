@@ -33,7 +33,13 @@ main {
     flex: 1;
 }
 
-.container1{
+/* --- HELPER CLASSES --- */
+.container {
+    max-width: 1400px;
+    padding: 0 20px;
+}
+
+.container1 {
     padding-bottom: 150px;
     padding-left: 20px;
     padding-right: 20px;
@@ -159,6 +165,7 @@ nav {
 
 .nav-logo-link {
     display: block;
+    z-index: 1001;
 }
 
 .nav-links {
@@ -185,7 +192,7 @@ nav {
     opacity: 0.6;
 }
 
-/* --- HERO GALLERY (UPDATED: Floating Center Layout) --- */
+/* --- HERO GALLERY (Floating Center Layout) --- */
 .hero-gallery {
     position: relative;
     width: 100%;
@@ -193,14 +200,15 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 25vw; /* Creates the spacing left/right */
+    /* Großzügiges Padding links/rechts, damit die Bilder "schweben" */
+    padding: 0 15vw; 
     background-color: var(--bg-color);
 }
 
 .gallery-container {
     position: relative;
     width: 100%;
-    height: 80vh; /* Floating height */
+    height: 80vh; 
     max-height: 900px;
     overflow: hidden;
 }
@@ -225,8 +233,7 @@ nav {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    /* Removed filter for cleaner look, or keep if desired */
-    filter: grayscale(0%); 
+    filter: grayscale(0%);
     transition: transform 6s ease-out;
 }
 
@@ -234,59 +241,47 @@ nav {
     transform: scale(1.05);
 }
 
-/* Gallery Navigation (Updated positioning) */
+/* --- GALLERY NAVIGATION (Pfeile links/rechts) --- */
+/* Der Container ist nur ein Wrapper ohne eigenes Layout */
 .gallery-nav {
-    position: absolute;
-    bottom: 5vh;
-    right: 8vw; /* Aligned with the gallery padding */
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    z-index: 100;
-    mix-blend-mode: difference;
+    position: static;
+    display: contents;
 }
 
 .gallery-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     background: transparent;
-    border: 1px solid #fff;
-    color: #fff;
-    width: 50px;
-    height: 50px;
+    border: none;
+    color: var(--text-color); /* Schwarz auf Weiß */
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
     cursor: none;
+    z-index: 100;
+}
+
+/* Positionierung der Pfeile */
+.gallery-prev {
+    left: 3vw; 
+}
+
+.gallery-next {
+    right: 3vw;
 }
 
 .gallery-btn:hover {
-    background: #fff;
-    color: #000;
-    border-color: #fff;
-}
-
-.gallery-counter {
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.current-slide {
-    font-weight: 500;
-}
-
-.separator,
-.total-slides {
     opacity: 0.5;
+    transform: translateY(-50%) scale(1.1);
 }
 
 /* --- ABOUT MINIMAL (Index) --- */
 .about-minimal {
-    padding: 120px 40px;
+    padding: 100px 230px;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -296,6 +291,61 @@ nav {
     line-height: 1.3;
     font-weight: 300;
     max-width: 800px;
+}
+
+/* --- GLOBAL FOOTER (Kompakt) --- */
+.site-footer {
+    padding: 40px 40px 20px 40px;
+    border-top: 1px solid #e5e5e5;
+    background-color: var(--bg-color);
+    width: 100%;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.footer-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.footer-col p, 
+.footer-col a {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: opacity 0.3s ease;
+}
+
+.footer-col a:hover {
+    opacity: 0.5;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid transparent; 
+    font-size: 0.7rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
 }
 
 /* --- PAGE HEADER (Subpages) --- */
@@ -310,12 +360,6 @@ nav {
     text-transform: uppercase;
     letter-spacing: -0.02em;
     line-height: 1;
-}
-
-/* --- CONTAINER --- */
-.container {
-    max-width: 1400px;
-    padding: 0 20px;
 }
 
 /* --- PROJECTS PAGE --- */
@@ -459,7 +503,6 @@ nav {
 /* --- CONTACT PAGE --- */
 .contact-content {
     padding-bottom: 100px;
-    /* min-height calculation removed as we now use flex footer */
     display: flex;
     flex-direction: column;
 }
@@ -539,60 +582,6 @@ nav {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: #999;
-}
-
-/* --- GLOBAL FOOTER (NEW) --- */
-.site-footer {
-    padding: 80px 40px 40px 40px;
-    border-top: 1px solid #e5e5e5;
-    background-color: var(--bg-color);
-    width: 100%;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 60px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.footer-col {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.footer-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #999;
-    margin-bottom: 5px;
-}
-
-.footer-col p, 
-.footer-col a {
-    font-size: 0.95rem;
-    color: var(--text-color);
-    text-decoration: none;
-    line-height: 1.5;
-    transition: opacity 0.3s ease;
-}
-
-.footer-col a:hover {
-    opacity: 0.5;
-}
-
-.footer-bottom {
-    margin-top: 80px;
-    padding-top: 20px;
-    border-top: 1px solid transparent; 
-    font-size: 0.75rem;
-    color: #999;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
 }
 
 /* --- ANIMATIONS --- */
@@ -776,16 +765,19 @@ nav {
 
     /* Hero Gallery Mobile */
     .hero-gallery {
-        padding: 0 50px;
+        padding: 0 20px; /* Weniger Padding auf Mobile */
     }
     
     .gallery-container {
         height: 70vh;
     }
     
-    .gallery-nav {
-        right: 25px;
-        bottom: 25px; /* Adjust relative to screen */
+    .gallery-prev {
+        left: 10px;
+    }
+    
+    .gallery-next {
+        right: 10px;
     }
 
     .about-minimal {
@@ -831,16 +823,16 @@ nav {
     
     /* Global Footer Mobile */
     .site-footer {
-        padding: 60px 25px;
+        padding: 30px 25px 20px 25px;
     }
     
     .footer-content {
         flex-direction: column;
-        gap: 40px;
+        gap: 30px;
     }
     
     .footer-bottom {
-        margin-top: 40px;
+        margin-top: 20px;
     }
 }
 
