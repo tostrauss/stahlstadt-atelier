@@ -201,7 +201,7 @@ nav {
     justify-content: center;
     align-items: center;
     /* Großzügiges Padding links/rechts, damit die Bilder "schweben" */
-    padding: 0 15vw; 
+    padding: 0 25vw; 
     background-color: var(--bg-color);
 }
 
@@ -231,7 +231,7 @@ nav {
 .gallery-slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     filter: grayscale(0%);
     transition: transform 6s ease-out;
@@ -281,7 +281,7 @@ nav {
 
 /* --- ABOUT MINIMAL (Index) --- */
 .about-minimal {
-    padding: 100px 230px;
+    padding: 100px 20px;
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -291,6 +291,8 @@ nav {
     line-height: 1.3;
     font-weight: 300;
     max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 /* --- GLOBAL FOOTER (Kompakt) --- */
@@ -339,7 +341,7 @@ nav {
 }
 
 .footer-bottom {
-    margin-top: 30px;
+    margin-top: 10px;
     padding-top: 15px;
     border-top: 1px solid transparent; 
     font-size: 0.7rem;
@@ -469,6 +471,27 @@ nav {
     line-height: 1.3;
     font-weight: 300;
     max-width: 800px;
+}
+.container1 {
+    font-size: 20px;
+    font-weight: 300; /* Dünne Schrift wie im Screenshot */
+    line-height: 1.5;
+    max-width: 1200px; /* Optional: Text nicht zu breit werden lassen */
+}
+
+/* Anpassung der About Überschrift */
+.about-title {
+    font-size: 20px;          /* Gleiche Größe wie der Text */
+    font-weight: 300;         /* Gleiche Dicke wie der Text */
+    text-transform: none;     /* Keine Großbuchstaben mehr */
+    letter-spacing: normal;   /* Normaler Buchstabenabstand */
+    margin: 0;                /* Reset */
+}
+
+/* Abstand zwischen Überschrift und Text */
+.page-header.about-header {
+    padding-top: 150px;       /* Abstand von oben (Nav) */
+    padding-bottom: 60px;     /* Das "bessere Spacing" nach unten zum Text */
 }
 
 .team-section {
